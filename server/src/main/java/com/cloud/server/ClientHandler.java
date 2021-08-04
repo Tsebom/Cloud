@@ -428,7 +428,7 @@ public class ClientHandler {
                 serializeBeforeSendData("ok");
             } else if (command.startsWith("create_dir")) {
                 Files.createDirectory(Paths.get(currentPath.resolve(
-                        command.substring("create_file ".length())).toString()));
+                        command.substring("create_dir ".length())).toString()));
                 serializeBeforeSendData("ok");
             }
         } catch (IOException e) {
