@@ -91,8 +91,8 @@ public class ClientController implements Initializable {
     }
 
     /**
-     *
-     * @param warning -
+     * Create the Warning window with message
+     * @param warning - the message that you need to send to user
      */
     public static void alertWarning(String warning) {
         Alert alert = new Alert(Alert.AlertType.WARNING, warning, ButtonType.OK);
@@ -100,8 +100,8 @@ public class ClientController implements Initializable {
     }
 
     /**
-     *
-     * @param path -
+     * Update the list of file when moving through directories
+     * @param path - the path of directory what you need to update
      */
     public void updateFileTable (Path path) {
         try {
@@ -116,7 +116,7 @@ public class ClientController implements Initializable {
     }
 
     /**
-     *
+     * Implementing action of exit from app
      * @param actionEvent -
      */
     public void exitAction(ActionEvent actionEvent) {
@@ -127,7 +127,7 @@ public class ClientController implements Initializable {
     }
 
     /**
-     *
+     * Moving back through directories
      * @param actionEvent -
      */
     public void toParentPathAction(ActionEvent actionEvent) {
@@ -138,7 +138,7 @@ public class ClientController implements Initializable {
     }
 
     /**
-     *
+     * Selection part of hard-disk
      * @param actionEvent -
      */
     public void selectDisk(ActionEvent actionEvent) {
@@ -147,7 +147,7 @@ public class ClientController implements Initializable {
     }
 
     /**
-     *
+     * Selection files or directories from list representing in the client part of window
      * @param mouseEvent -
      */
     public void selectDirectoryOrFile(MouseEvent mouseEvent) {
@@ -168,7 +168,7 @@ public class ClientController implements Initializable {
     }
 
     /**
-     *
+     * Set selected a file or directory like source for copy
      * @param actionEvent -
      */
     public void copyFileOrDir(ActionEvent actionEvent) {
@@ -182,7 +182,7 @@ public class ClientController implements Initializable {
     }
 
     /**
-     *
+     * Set selected a file or directory like source for cut
      * @param actionEvent -
      */
     public void cutFileOrDir(ActionEvent actionEvent) {
@@ -196,7 +196,7 @@ public class ClientController implements Initializable {
     }
 
     /**
-     *
+     * Starting process of copy or cut if appropriate process was selected
      * @param actionEvent -
      */
     public void pasteFileOrDir(ActionEvent actionEvent) {
@@ -217,9 +217,9 @@ public class ClientController implements Initializable {
     }
 
     /**
-     *
-     * @param source -
-     * @param target -
+     * Starting process of copy according type of selected file or directory
+     * @param source - the path to a source file or directory
+     * @param target - the path to a target directory
      */
     private void pastCopyFileOrDir(Path source, Path target) {
         if (!Files.isDirectory(source)) {
@@ -230,9 +230,9 @@ public class ClientController implements Initializable {
     }
 
     /**
-     *
-     * @param source -
-     * @param target -
+     * Implementing of copying file with checking their existence
+     * @param source - the path to a source file
+     * @param target - the path to a target directory
      */
     private void copyFile(Path source, Path target) {
         try {
@@ -254,9 +254,9 @@ public class ClientController implements Initializable {
     }
 
     /**
-     *
-     * @param source -
-     * @param target -
+     * Implementing of copying directory
+     * @param source - the path to a source directory
+     * @param target - the path to a target directory
      */
     private void copyDirectory(Path source, Path target) {
         try {
@@ -289,7 +289,7 @@ public class ClientController implements Initializable {
     }
 
     /**
-     *
+     * Set selected a file or directory for delete
      * @param actionEvent -
      */
     public void deleteCommand(ActionEvent actionEvent) {
@@ -305,8 +305,8 @@ public class ClientController implements Initializable {
     }
 
     /**
-     *
-     * @param target -
+     * Starting process of delete according type of selected file or directory
+     * @param target - the path to a file or directory to be deleted
      */
     public void deleteFileOrDir(Path target) {
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION, "You are sure",
@@ -327,8 +327,8 @@ public class ClientController implements Initializable {
     }
 
     /**
-     *
-     * @param path -
+     * Implementing of deleting directory
+     * @param path - the path to a directory to be deleted
      */
     private void deleteDirectory(Path path) {
         try {
@@ -363,7 +363,7 @@ public class ClientController implements Initializable {
     }
 
     /**
-     *
+     * Renaming selected file or directory
      * @param actionEvent -
      */
     public void renameFile(ActionEvent actionEvent) {
@@ -385,7 +385,7 @@ public class ClientController implements Initializable {
     }
 
     /**
-     *
+     *  Creating new folder or file inside current directory
      * @param actionEvent -
      */
     public void createNewFolderOrFile(ActionEvent actionEvent) {
@@ -406,7 +406,7 @@ public class ClientController implements Initializable {
     }
 
     /**
-     *
+     * Filling the list logical disks
      */
     private void fillDiskList() {
         disks.getItems().clear();
@@ -417,7 +417,7 @@ public class ClientController implements Initializable {
     }
 
     /**
-     *
+     * Upload file to the server
      * @param actionEvent -
      */
     public void uploadFile(ActionEvent actionEvent) {
@@ -436,7 +436,7 @@ public class ClientController implements Initializable {
     }
 
     /**
-     *
+     * Download file from the server
      * @param actionEvent -
      */
     public void downloadFile(ActionEvent actionEvent) {
@@ -448,9 +448,9 @@ public class ClientController implements Initializable {
     }
 
     /**
-     *
-     * @param path -
-     * @return -
+     * Detouring content of target directory
+     * @param path - the path to the target directory
+     * @return - the list of path the files consisting into directory
      */
     private List<Path> walkDirectory(Path path) {
         List<Path> list = new ArrayList<>();
@@ -470,10 +470,10 @@ public class ClientController implements Initializable {
     }
 
     /**
-     *
-     * @param path -
-     * @param source -
-     * @return -
+     * Cutting redundant part the path of file for further processing
+     * @param path - the previous path
+     * @param source - the redundant path
+     * @return - the required path
      */
     private Path truncationPath(Path path, Path source) {
         return  path.subpath(source.getNameCount(), path.getNameCount());
